@@ -155,6 +155,16 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="//www.parsecdn.com/js/parse-1.6.6.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    Parse.initialize("28I2KtJC7OSfMX7gh9UN5SGiif61bpUBzG9pdq8Z", "bm8W75dpSmvayu26EWikgyq8s263log6HNl4FWTW");
+    var TestObject = Parse.Object.extend("TestObject");
+var testObject = new TestObject();
+testObject.save({foo: "bar"}).then(function(object) {
+  alert("yay! it worked");
+});
+      
+    </script>
   </body>
 </html>
