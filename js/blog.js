@@ -6,10 +6,20 @@ $(function() {
  var Blogs = Parse.Collection.extend({
      model: Blog
  });
+ var BlogsView =  Parse.View.extend({
+    template: Handlebars.compile($('#blogs-tpl').html()),
+    render: function(){ 
+        var collection = { blog: this.collection.toJSON() };
+        this.$el.html(this.template(collection));
+    }
+});
  var blogs = new Blogs();
  blogs.fetch({
      success: function(blogs) {
-         console.log(blogs);
+        console.log(blogs);
+        var blogsView = new BlogsView({ collection: blogs });
+	blogsView.render();
+	$('.main-container').html(blogsView.el);
      },
      error: function(blogs, error) {
          console.log(error);
